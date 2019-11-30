@@ -12,7 +12,7 @@ const Home = () => {
             <h6 className='text-muted font-italic font-weight-normal'>Tumble dryer monitoring system</h6>
           </div>
           <br />
-          <div className='pt-4 text-center'>
+          <div className='pt-2 text-center'>
             <div className='py-2'>
               <i className='fas fa-plug pr-2' style={{ color: 'purple' }} />
               <span>Dryer status: </span>

@@ -4,7 +4,7 @@ import animation from '../assets/animations/cBot.json'
 
 const Animation = () => {
   return (
-    <div className='pt-5'>
+    <div className='pt-3'>
       <Lottie
         options={{
           animationData: animation,
