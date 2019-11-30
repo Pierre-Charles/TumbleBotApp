@@ -6,6 +6,7 @@ const Home = () => {
   return (
     <div>
       <div className='mt-5 mx-4'>
+        <Animation />
         <div className='col-12 col-lg-5 col-md-5 container bg-light p-5 shadow'>
           <div className='text-center'>
             <h3>TumbleBot</h3>
@@ -41,7 +42,6 @@ const Home = () => {
               <p style={{ color: '#004e86' }}>%SW420%</p>
             </div>
           </div>
-          <Animation />
         </div>
       </div>
     </div>

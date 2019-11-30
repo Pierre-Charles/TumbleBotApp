@@ -4,14 +4,14 @@ import animation from '../assets/animations/cBot.json'
 
 const Animation = () => {
   return (
-    <div className='pt-3'>
+    <div className='pt-3 animation'>
       <Lottie
         options={{
           animationData: animation,
           autoplay: true,
           loop: true,
         }}
-        height={180}
+        height={130}
         width={'auto'}
       />
     </div>
