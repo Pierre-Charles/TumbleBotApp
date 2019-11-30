@@ -7,7 +7,6 @@
 .cache/
 .netlify/
 dist/
-firebaseConfig.js
 
 # testing
 /coverage
