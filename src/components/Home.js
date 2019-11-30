@@ -5,9 +5,9 @@ import Animation from './Animation'
 const Home = () => {
   return (
     <div>
-      <div className='mt-5 mx-4'>
+      <div className='mt-0 mx-4'>
         <Animation />
-        <div className='col-12 col-lg-5 col-md-5 container bg-light p-5 shadow'>
+        <div className='col-12 col-lg-5 col-md-5 container bg-light p-3 shadow'>
           <div className='text-center'>
             <h3>TumbleBot</h3>
             <h6 className='text-muted font-italic font-weight-normal'>Tumble dryer monitoring system</h6>
