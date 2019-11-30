@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Animation from './Animation'
+import * as firebase from 'firebase'
 
 const Home = () => {
   return (
@@ -8,7 +9,7 @@ const Home = () => {
       <div className='mt-0 mx-4'>
         <Animation />
         <div className='col-12 col-lg-5 col-md-5 container bg-light p-3 shadow'>
-          <div className='text-center'>
+          <div className='text-center pt-3'>
             <h3>TumbleBot</h3>
             <h6 className='text-muted font-italic font-weight-normal'>Tumble dryer monitoring system</h6>
           </div>
