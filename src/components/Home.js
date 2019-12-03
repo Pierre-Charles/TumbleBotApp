@@ -97,7 +97,7 @@ export default class Home extends Component {
       <div>
         <div className='mt-0 mx-4 mb-5'>
           <Animation />
-          <div className='col-7 col-lg-6 col-md-6 container bg-light p-3 shadow'>
+          <div className='col-12 col-lg-6 col-md-6 container bg-light p-3 shadow'>
             <div className='text-center pt-3'>
               <h3>TumbleBot</h3>
               <h6 className='text-muted font-italic font-weight-normal'>Tumble dryer monitoring system</h6>
