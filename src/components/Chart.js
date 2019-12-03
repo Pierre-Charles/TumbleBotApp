@@ -1,5 +1,6 @@
 import React from 'react'
 import { Line, Bar, Pie } from 'react-chartjs-2'
+import Calendar from './Calendar'
 
 const Chart = props => {
   console.log(props.data)
@@ -20,6 +21,7 @@ const Chart = props => {
   }
   return (
     <div>
+      <Calendar />
       <h5 className=' p-0 text-center'>Last week's usage</h5>
       <Bar data={data} width={200} height={150} options={
         {
