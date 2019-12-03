@@ -21,7 +21,7 @@ const Chart = props => {
   return (
     <div>
       <h5 className=' p-0 text-center'>Last week's usage</h5>
-      <Bar data={data} wdith={100} height={200} options={
+      <Bar data={data} width={100} height={50} options={
         {
           maintainAspectRatio: true,
           scales: {
