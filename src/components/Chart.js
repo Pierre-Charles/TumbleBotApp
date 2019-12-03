@@ -21,13 +21,15 @@ const Chart = props => {
   return (
     <div>
       <h5 className=' p-0 text-center'>Last week's usage</h5>
-      <Bar data={data} width={300} height={200} options={
+      <Bar data={data} width={200} height={100} options={
         {
           maintainAspectRatio: true,
           scales: {
           yAxes: [{
             ticks: {
-                beginAtZero: true
+                beginAtZero: true,
+                stepSize: 1
+
             }
           }]
 }
