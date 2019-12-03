@@ -18,7 +18,6 @@ const Chart = props => {
       }
     ]
   }
-  console.log('PROPS =>', props.data)
   return (
     <div>
       <h5 className=' p-0 text-center'>Weekly usage</h5>
