@@ -3,14 +3,30 @@ import ReactDOM from 'react-dom'
 import firebase from 'firebase'
 import Animation from './Animation'
 import { dbConfig } from '../firebaseConfig'
-import { Button, ButtonToolbar, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { OverlayTrigger, Tooltip } from 'react-bootstrap'
+import Chart from './Chart'
 
 export default class Home extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.app = firebase.initializeApp(dbConfig)
     this.database = this.app.database().ref().child('object')
-    this.state = {}
+    this.state = {
+      cycleStatus: '',
+      dryerStatus: '',
+      ldr: 0,
+      sw420: 0,
+      usage: {
+        monday: 0,
+        tuesday: 0,
+        wednesday: 0,
+        thursday: 0,
+        friday: 0,
+        saturday: 0,
+        sunday: 0
+      },
+      user: ''
+    }
   }
 
   componentDidMount() {
@@ -19,6 +35,7 @@ export default class Home extends Component {
     this.getDryerStatus()
     this.getCycleStatus()
     this.getUser()
+    this.getUsage()
   }
 
   getSw420Values = () => {
@@ -26,6 +43,15 @@ export default class Home extends Component {
     sw420.on('value', snap => {
       this.setState({
         sw420: snap.val()
+      })
+    })
+  }
+
+  getUsage = () => {
+    const sw420 = this.database.child('usage')
+    sw420.on('value', snap => {
+      this.setState({
+        usage: snap.val()
       })
     })
   }
@@ -69,9 +95,9 @@ export default class Home extends Component {
   render() {
     return (
       <div>
-        <div className='mt-0 mx-4'>
+        <div className='mt-0 mx-4 mb-5'>
           <Animation />
-          <div className='col-12 col-lg-5 col-md-5 container bg-light p-3 shadow'>
+          <div className='col-12 col-lg-5 col-md-7 container bg-light p-3 shadow'>
             <div className='text-center pt-3'>
               <h3>TumbleBot</h3>
               <h6 className='text-muted font-italic font-weight-normal'>Tumble dryer monitoring system</h6>
@@ -113,10 +139,14 @@ export default class Home extends Component {
                   placement='top'
                   overlay={<Tooltip id={`tooltip-$'top`}>Readings from the vibration sensor <b>(SW-420)</b>.</Tooltip>}
                 >
-                <p className='m-0'>Vibration:</p>
+                  <p className='m-0'>Vibration:</p>
                 </OverlayTrigger>
                 <p style={{ color: '#004e86' }}>{this.state.sw420}</p>
               </div>
+            </div>
+            <hr />
+            <div className='pt-0 pb-2'>
+              <Chart data={this.state.usage} />
             </div>
           </div>
         </div>
