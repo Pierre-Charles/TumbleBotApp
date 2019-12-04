@@ -3,8 +3,6 @@ import { Line, Bar, Pie } from 'react-chartjs-2'
 import Calendar from './Calendar'
 
 const Chart = props => {
-  console.log(props.data)
-  console.log(Object.values(props.data))
   const data = {
     labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
     datasets: [
