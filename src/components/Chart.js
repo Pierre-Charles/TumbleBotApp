@@ -27,14 +27,13 @@ const Chart = props => {
         {
           maintainAspectRatio: true,
           scales: {
-          yAxes: [{
-            ticks: {
+            yAxes: [{
+              ticks: {
                 beginAtZero: true,
                 stepSize: 1
-
-            }
-          }]
-}
+              }
+            }]
+          }
         }
       }
       />
