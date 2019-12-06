@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import firebase from 'firebase'
+import * as firebase from 'firebase/app'
 import Animation from './Animation'
 import { dbConfig } from '../firebaseConfig'
 import { OverlayTrigger, Tooltip } from 'react-bootstrap'
 import Chart from './Chart'
+import moment from 'moment'
 
 export default class Home extends Component {
   constructor(props) {
@@ -30,12 +31,19 @@ export default class Home extends Component {
   }
 
   componentDidMount() {
+    setInterval(this.updateTime, 1000)
     this.getSw420Values()
     this.getLdrValues()
     this.getDryerStatus()
     this.getCycleStatus()
     this.getUser()
     this.getUsage()
+  }
+
+  updateTime = () => {
+    this.setState({
+      date: new Date()
+    })
   }
 
   getSw420Values = () => {
@@ -97,10 +105,12 @@ export default class Home extends Component {
       <div>
         <div className='mt-0 mx-4 mb-5'>
           <Animation />
-          <div className='col-12 col-lg-6 col-md-8 container bg-light p-3 shadow'>
+          <div className='col-12 col-lg-5 col-md-7 container bg-light p-3 shadow'>
             <div className='text-center pt-3'>
-              <h3>TumbleBot</h3>
-              <h6 className='text-muted font-italic font-weight-normal'>Tumble dryer monitoring system</h6>
+              <h1 className='h6' style={{ color: '#004e86' }}>{moment().format('dddd, Do MMMM YYYY')}</h1>
+              <h1 className='h6' style={{ color: '#004e86' }}>{moment().format('hh:mm:ss')}</h1>
+              <h2 className='h3 mt-5'>TumbleBot</h2>
+              <h3 className='h6 text-muted font-italic font-weight-normal'>Tumble dryer monitoring system</h3>
             </div>
             <br />
             <div className='pt-2 text-center'>
