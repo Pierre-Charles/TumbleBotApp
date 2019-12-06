@@ -107,10 +107,8 @@ export default class Home extends Component {
           <Animation />
           <div className='col-12 col-lg-5 col-md-7 container bg-light p-3 shadow'>
             <div className='text-center pt-3'>
-              <h1 className='h6' style={{ color: '#004e86' }}>{moment().format('dddd, Do MMMM YYYY')}</h1>
-              <h1 className='h6' style={{ color: '#004e86' }}>{moment().format('hh:mm:ss')}</h1>
-              <h2 className='h3 mt-4'>TumbleBot</h2>
-              <h3 className='h6 text-muted font-italic font-weight-normal'>Tumble dryer monitoring system</h3>
+              <h1 className='h3 mt-4'>TumbleBot</h1>
+              <h2 className='h6 text-muted font-italic font-weight-normal'>Tumble dryer monitoring system</h2>
             </div>
             <br />
             <div className='pt-2 text-center'>
