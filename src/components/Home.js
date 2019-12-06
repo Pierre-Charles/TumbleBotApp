@@ -31,19 +31,12 @@ export default class Home extends Component {
   }
 
   componentDidMount() {
-    setInterval(this.updateTime, 1000)
     this.getSw420Values()
     this.getLdrValues()
     this.getDryerStatus()
     this.getCycleStatus()
     this.getUser()
     this.getUsage()
-  }
-
-  updateTime = () => {
-    this.setState({
-      date: new Date()
-    })
   }
 
   getSw420Values = () => {
