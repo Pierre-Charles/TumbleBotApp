@@ -109,7 +109,7 @@ export default class Home extends Component {
             <div className='text-center pt-3'>
               <h1 className='h6' style={{ color: '#004e86' }}>{moment().format('dddd, Do MMMM YYYY')}</h1>
               <h1 className='h6' style={{ color: '#004e86' }}>{moment().format('hh:mm:ss')}</h1>
-              <h2 className='h3 mt-3'>TumbleBot</h2>
+              <h2 className='h3 mt-4'>TumbleBot</h2>
               <h3 className='h6 text-muted font-italic font-weight-normal'>Tumble dryer monitoring system</h3>
             </div>
             <br />
@@ -130,7 +130,7 @@ export default class Home extends Component {
                 <span style={{ color: '#004e86' }}>{this.state.user}</span>
               </div>
             </div>
-            <div className='row pt-5 text-center'>
+            <div className='row pt-5 text-center px-0'>
               <div className='col-md-6 col-6 text-center'>
                 <i className='fas fa-chart-area' style={{ color: 'purple' }} />
                 <OverlayTrigger
@@ -142,7 +142,7 @@ export default class Home extends Component {
                 </OverlayTrigger>
                 <p style={{ color: '#004e86' }}>{this.state.ldr}</p>
               </div>
-              <div className='col-md-6 col-6 text-center'>
+              <div className='col-md-6 col-6 text-center px-0'>
                 <i className="fas fa-cogs" style={{ color: 'purple' }} />
                 <OverlayTrigger
                   key='top'
