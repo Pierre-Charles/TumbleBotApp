@@ -142,29 +142,6 @@ export default class Home extends Component {
             </div>
             <div className='row pt-5 text-center px-0'>
               <div className='col-md-6 col-6 text-center'>
-                <i className='fas fa-clock' style={{ color: 'purple' }} />
-                <OverlayTrigger
-                  key='top'
-                  placement='top'
-                  overlay={<Tooltip id={`tooltip-$'top`}>When the tumble dryer started.</Tooltip>}
-                >
-                  <p className='m-0'>Start time:</p>
-                </OverlayTrigger>
-                <p style={{ color: '#004e86' }}>{moment(cycleStartTime).format("MMM Do YY, hh:mm")}</p>
-              </div>
-              <div className='col-md-6 col-6 text-center'>
-                <i className='fas fa-clock' style={{ color: 'purple' }} />
-                <OverlayTrigger
-                  key='top'
-                  placement='top'
-                  overlay={<Tooltip id={`tooltip-$'top`}>When the tumble dryer finished.</Tooltip>}
-                >
-                  <p className='m-0'>End time:</p>
-                </OverlayTrigger>
-                <p style={{ color: '#004e86' }}>{moment(cycleEndTime).format("MMM Do YY, hh:mm")}</p>
-              </div>
-
-              <div className='col-md-6 col-6 text-center'>
                 <i className='fas fa-chart-area' style={{ color: 'purple' }} />
                 <OverlayTrigger
                   key='top'
@@ -186,8 +163,32 @@ export default class Home extends Component {
                 </OverlayTrigger>
                 <p style={{ color: '#004e86' }}>{sw420}</p>
               </div>
+              <div className='col-md-6 col-6 text-center'>
+                <i className='fas fa-clock' style={{ color: 'purple' }} />
+                <OverlayTrigger
+                  key='top'
+                  placement='top'
+                  overlay={<Tooltip id={`tooltip-$'top`}>When the tumble dryer started.</Tooltip>}
+                >
+                  <p className='m-0'>Start time:</p>
+                </OverlayTrigger>
+                <span style={{ color: '#004e86' }}>{moment(cycleStartTime).format("MMM Do YY")}</span><br />
+                <span style={{ color: '#004e86' }}>{moment(cycleStartTime).format("hh:mm")}</span>
+              </div>
+              <div className='col-md-6 col-6 text-center'>
+                <i className='fas fa-clock' style={{ color: 'purple' }} />
+                <OverlayTrigger
+                  key='top'
+                  placement='top'
+                  overlay={<Tooltip id={`tooltip-$'top`}>When the tumble dryer finished.</Tooltip>}
+                >
+                  <p className='m-0'>End time:</p>
+                </OverlayTrigger>
+                <span style={{ color: '#004e86' }}>{moment(cycleEndTime).format("MMM Do YY")}</span><br />
+                <span style={{ color: '#004e86' }}>{moment(cycleEndTime).format("hh:mm")}</span><br />
+              </div>
             </div>
-            <hr />
+            <hr className='mt-4' />
             <div className='pt-0 pb-2'>
               <Chart data={usage} />
             </div>
