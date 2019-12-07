@@ -4,18 +4,37 @@ import Calendar from './Calendar'
 
 const Chart = props => {
   const data = {
-    labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
     datasets: [
       {
-        label: 'Hours used',
+        label: 'Pierre',
+        backgroundColor: 'rgba(0,78,134,0.2)',
+        borderColor: 'rgba(0,78,134,1)',
+        borderWidth: 1,
+        hoverBackgroundColor: 'rgba(0,78,134,0.4)',
+        hoverBorderColor: 'rgba(0,78,134,1)',
+        data: props.data.pierreUsage.slice(1),
+      },
+      {
+        label: 'Shanice',
         backgroundColor: 'rgba(128,0,128,0.2)',
         borderColor: 'rgba(128,0,128,1)',
         borderWidth: 1,
         hoverBackgroundColor: 'rgba(128,0,128,0.4)',
         hoverBorderColor: 'rgba(128,0,128,1)',
-        data: Object.values(props.data),
+        data: props.data.shaniceUsage.slice(1),
+      },
+      {
+        label: 'Nicky',
+        backgroundColor: 'rgba(253,136,51,0.2)',
+        borderColor: 'rgba(253,136,51,1)',
+        borderWidth: 1,
+        hoverBackgroundColor: 'rgba(253,136,51,0.4)',
+        hoverBorderColor: 'rgba(253,136,51,1)',
+        data: props.data.nickyUsage.slice(1),
+
       }
-    ]
+    ],
+    labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
   }
   return (
     <div>
@@ -29,8 +48,10 @@ const Chart = props => {
               ticks: {
                 beginAtZero: true,
                 stepSize: 1
-              }
-            }]
+              },
+              stacked: true
+            }],
+            xAxes: [{ stacked: true }]
           }
         }
       }

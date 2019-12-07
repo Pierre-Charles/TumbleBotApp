@@ -18,13 +18,9 @@ export default class Home extends Component {
       ldr: 0,
       sw420: 0,
       usage: {
-        monday: 0,
-        tuesday: 0,
-        wednesday: 0,
-        thursday: 0,
-        friday: 0,
-        saturday: 0,
-        sunday: 0
+        pierreUsage: [0,0,0,0,0,0,0],
+        shaniceUsage: [0,0,0,0,0,0,0],
+        nickyUsage: [0,0,0,0,0,0,0]
       },
       user: ''
     }
