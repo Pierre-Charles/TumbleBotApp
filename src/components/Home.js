@@ -18,11 +18,13 @@ export default class Home extends Component {
       ldr: 0,
       sw420: 0,
       usage: {
-        pierreUsage: [0,0,0,0,0,0,0],
-        shaniceUsage: [0,0,0,0,0,0,0],
-        nickyUsage: [0,0,0,0,0,0,0]
+        pierreUsage: [0, 0, 0, 0, 0, 0, 0],
+        shaniceUsage: [0, 0, 0, 0, 0, 0, 0],
+        nickyUsage: [0, 0, 0, 0, 0, 0, 0]
       },
-      user: ''
+      user: '',
+      cycleStartTime: '0000-00-00T00:00:00Z',
+      cycleEndTime: '0000-00-00T00:00:00Z'
     }
   }
 
@@ -33,6 +35,8 @@ export default class Home extends Component {
     this.getCycleStatus()
     this.getUser()
     this.getUsage()
+    this.getStartTime()
+    this.getEndTime()
   }
 
   getSw420Values = () => {
@@ -89,7 +93,26 @@ export default class Home extends Component {
     })
   }
 
+  getStartTime = () => {
+    const startTime = this.database.child('cycleStartTime')
+    startTime.on('value', snap => {
+      this.setState({
+        cycleStartTime: snap.val()
+      })
+    })
+  }
+
+  getEndTime = () => {
+    const endTime = this.database.child('cycleEndTime')
+    endTime.on('value', snap => {
+      this.setState({
+        cycleEndTime: snap.val()
+      })
+    })
+  }
+
   render() {
+    const { cycleStartTime, cycleEndTime, dryerStatus, cycleStatus, user, ldr, sw420, usage } = this.state
     return (
       <div>
         <div className='mt-0 mx-4 mb-5'>
@@ -104,20 +127,43 @@ export default class Home extends Component {
               <div className='py-2'>
                 <i className='fas fa-plug pr-2' style={{ color: 'purple' }} />
                 <span>Dryer status: </span>
-                <span style={{ color: '#004e86' }}>{this.state.dryerStatus}</span>
+                <span style={{ color: '#004e86' }}>{dryerStatus}</span>
               </div>
               <div className='py-2'>
                 <i className='fas fa-power-off pr-2' style={{ color: 'purple' }} />
                 <span>Cycle status: </span>
-                <span style={{ color: '#004e86' }}>{this.state.cycleStatus}</span>
+                <span style={{ color: '#004e86' }}>{cycleStatus}</span>
               </div>
               <div className='py-2'>
                 <i className='fas fa-user pr-2' style={{ color: 'purple' }} />
                 <span>Used by: </span>
-                <span style={{ color: '#004e86' }}>{this.state.user}</span>
+                <span style={{ color: '#004e86' }}>{user}</span>
               </div>
             </div>
             <div className='row pt-5 text-center px-0'>
+              <div className='col-md-6 col-6 text-center'>
+                <i className='fas fa-clock' style={{ color: 'purple' }} />
+                <OverlayTrigger
+                  key='top'
+                  placement='top'
+                  overlay={<Tooltip id={`tooltip-$'top`}>When the tumble dryer started.</Tooltip>}
+                >
+                  <p className='m-0'>Start time:</p>
+                </OverlayTrigger>
+                <p style={{ color: '#004e86' }}>{moment(cycleStartTime).format("MMM Do YY, hh:mm")}</p>
+              </div>
+              <div className='col-md-6 col-6 text-center'>
+                <i className='fas fa-clock' style={{ color: 'purple' }} />
+                <OverlayTrigger
+                  key='top'
+                  placement='top'
+                  overlay={<Tooltip id={`tooltip-$'top`}>When the tumble dryer finished.</Tooltip>}
+                >
+                  <p className='m-0'>End time:</p>
+                </OverlayTrigger>
+                <p style={{ color: '#004e86' }}>{moment(cycleEndTime).format("MMM Do YY, hh:mm")}</p>
+              </div>
+
               <div className='col-md-6 col-6 text-center'>
                 <i className='fas fa-chart-area' style={{ color: 'purple' }} />
                 <OverlayTrigger
@@ -127,7 +173,7 @@ export default class Home extends Component {
                 >
                   <p className='m-0'>Light:</p>
                 </OverlayTrigger>
-                <p style={{ color: '#004e86' }}>{this.state.ldr}</p>
+                <p style={{ color: '#004e86' }}>{ldr}</p>
               </div>
               <div className='col-md-6 col-6 text-center px-0'>
                 <i className="fas fa-cogs" style={{ color: 'purple' }} />
@@ -138,12 +184,12 @@ export default class Home extends Component {
                 >
                   <p className='m-0'>Vibration:</p>
                 </OverlayTrigger>
-                <p style={{ color: '#004e86' }}>{this.state.sw420}</p>
+                <p style={{ color: '#004e86' }}>{sw420}</p>
               </div>
             </div>
             <hr />
             <div className='pt-0 pb-2'>
-              <Chart data={this.state.usage} />
+              <Chart data={usage} />
             </div>
           </div>
         </div>
