@@ -135,6 +135,11 @@ export default class Home extends Component {
                 <span style={{ color: '#004e86' }}>{cycleStatus}</span>
               </div>
               <div className='py-2'>
+                <i className='fas fa-clock pr-2' style={{ color: 'purple' }} />
+                <span>Last used on: </span>
+                <span style={{ color: '#004e86' }}>{moment(cycleStartTime).format("MMM Do YY @ HH:mm")}</span>
+              </div>
+              <div className='py-2'>
                 <i className='fas fa-user pr-2' style={{ color: 'purple' }} />
                 <span>Used by: </span>
                 <span style={{ color: '#004e86' }}>{user}</span>
@@ -162,30 +167,6 @@ export default class Home extends Component {
                   <p className='m-0'>Vibration:</p>
                 </OverlayTrigger>
                 <p style={{ color: '#004e86' }}>{sw420}</p>
-              </div>
-              <div className='col-md-6 col-6 text-center'>
-                <i className='fas fa-clock' style={{ color: 'purple' }} />
-                <OverlayTrigger
-                  key='top'
-                  placement='top'
-                  overlay={<Tooltip id={`tooltip-$'top`}>When the tumble dryer started.</Tooltip>}
-                >
-                  <p className='m-0'>Start time:</p>
-                </OverlayTrigger>
-                <span style={{ color: '#004e86' }}>{moment(cycleStartTime).format("MMM Do YY")}</span><br />
-                <span style={{ color: '#004e86' }}>{moment(cycleStartTime).format("hh:mm")}</span>
-              </div>
-              <div className='col-md-6 col-6 text-center'>
-                <i className='fas fa-clock' style={{ color: 'purple' }} />
-                <OverlayTrigger
-                  key='top'
-                  placement='top'
-                  overlay={<Tooltip id={`tooltip-$'top`}>When the tumble dryer finished.</Tooltip>}
-                >
-                  <p className='m-0'>End time:</p>
-                </OverlayTrigger>
-                <span style={{ color: '#004e86' }}>{moment(cycleEndTime).format("MMM Do YY")}</span><br />
-                <span style={{ color: '#004e86' }}>{moment(cycleEndTime).format("hh:mm")}</span><br />
               </div>
             </div>
             <hr className='mt-4' />
