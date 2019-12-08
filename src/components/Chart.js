@@ -45,13 +45,19 @@ const Chart = props => {
           maintainAspectRatio: true,
           scales: {
             yAxes: [{
+              scaleLabel: {
+                display: true,
+                labelString: 'Hours used'
+              },
               ticks: {
                 beginAtZero: true,
                 stepSize: 1
               },
               stacked: true
             }],
-            xAxes: [{ stacked: true }]
+            xAxes: [{
+              stacked: true
+              }]
           }
         }
       }
