@@ -56,7 +56,11 @@ const Chart = props => {
               stacked: true
             }],
             xAxes: [{
-              stacked: true
+              stacked: true,
+              scaleLabel: {
+                display: true,
+                labelString: 'Days of the week'
+              },
               }]
           }
         }
